@@ -37,20 +37,26 @@ def hello_world():
     return render_template("index.html")
 
 
-class GACentile(Resource):
+class GetChart(Resource):
     def get(self):
         return 'Submit data'
 
     def post(self):
-        args = parser.parse_args()
-        getstring = args['request']
-        month_req = re.search('mm(.*)yyyy', getstring)
-        month_req = str(month_req.group(1))
-        year_req = re.search('yyyy(.*)item', getstring)
-        year_req = str(year_req.group(1))
-        item_req = str(getstring.partition('item')[2])
-        filestr = item_req + '.html'
-        filename = str(Path.cwd() / year_req / month_req / filestr)
+        # args = parser.parse_args()
+        # getstring = args['request']
+        # month_req = re.search('mm(.*)yyyy', getstring)
+        # month_req = str(month_req.group(1))
+        # year_req = re.search('yyyy(.*)item', getstring)
+        # year_req = str(year_req.group(1))
+        # item_req = str(getstring.partition('item')[2])
+        # filestr = item_req + '.html'
+        # filename = str(Path.cwd() / year_req / month_req / filestr)
         filetest = str(Path.cwd() / 'static/test.html')
 
         return render_template(filetest)
+
+
+api.add_resource(GetChart, '/getchart')
+
+if __name__ == '__main__':
+    app.run()

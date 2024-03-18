@@ -68,7 +68,7 @@ class TodoList(Resource):
 class GACentile(Resource):
     def get(self):
         # return 'Submit data'
-        return render_template("index.html")
+        return render_template("test.html")
 
     def post(self):
         args = parser.parse_args()
